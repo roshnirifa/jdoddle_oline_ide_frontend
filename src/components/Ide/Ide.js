@@ -2,23 +2,42 @@ import React, { useState } from 'react';
 import './Ide.css'
 
 
-const Ide = () => {
-    const handleSubmitForC = () => {
-        let c = document.querySelector("#c").value;
+let output = '';
 
-        let output = document.querySelector(".ide #output");
-        fetch("http://localhost:5000/api", {
+const Ide = () => {
+    const handleSubmitForC = (event) => {
+        let cp = document.querySelector("#cp").value;
+
+        output = document.querySelector(".ide #output");
+        fetch("http://localhost:8000/api", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
-                code: c
+                code: cp
             })
         })
             .then((res) => res.json()).then(data => {
                 output.value = (data?.body?.output);
             })
+        // event.target
+    }
 
-        // console.log(html, css, js, output);
+
+
+    const handleSubmitForPython = () => {
+        let python = document.querySelector("#python").value;
+
+        output = document.querySelector(".ide #output");
+        fetch("http://localhost:8000/apipython", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                code: python
+            })
+        })
+            .then((res) => res.json()).then(data => {
+                output.value = (data?.body?.output);
+            })
 
     }
 
@@ -41,8 +60,16 @@ const Ide = () => {
                 <div class="row ide justify-content-center">
                     <div class="col-md-4 ">
                         <h4>C</h4>
-                        <textarea id="c"> </textarea> <br />
+                        <textarea id="cp"> </textarea> <br />
                         <button onClick={handleSubmitForC} class="btn btn-primary w-75 my-4" >submit</button>
+                    </div>
+
+
+
+                    <div class="col-md-4 ">
+                        <h4>Python</h4>
+                        <textarea id="python"> </textarea> <br />
+                        <button onClick={handleSubmitForPython} class="btn btn-primary w-75 my-4" >submit</button>
                     </div>
 
 
