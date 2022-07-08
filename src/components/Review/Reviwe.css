@@ -1,0 +1,32 @@
+.review-container {
+    height: 350px;
+    width: 300px;
+    box-shadow: 2px 2px 5px 5px gray;
+}
+
+.customer-img-name {
+    display: flex;
+    padding: 20px;
+}
+
+.customer-img-name h3 {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.review {
+    padding: 0px 20px 0px 20px;
+}
+
+.icon {
+    color: #F1C628
+}
